@@ -1,0 +1,29 @@
+MySQL结构化查询语言
+
+1.DDL（Data Definition  Language）    数据定义语言
+CREATE TABLE、ALTER TABLE、DROP TABLE、CREATE/DROP INDEX等；
+
+主要是用在定义或改变表（TABLE）的结构，数据类型，表之间的链接和约束等初始化工作上，
+他们大多在建立表时使用。
+
+DDL操作是隐性提交的，不能rollback。
+
+2.DML（Data Manipulation Language）　数据操纵语言
+INSERT、UPDATE、DELETE；
+
+主要是对表数据进行操作，如对表数据进行增、删、改。
+
+3.DCL（Data Control Language）    数据控制语言
+GRANT、REVOKE、ROLLBACK、COMMIT
+
+主要用来授予或回收访问数据库的某种特权，并控制数据库操纵事务发生的时间及效果，对数据库实行监视等。
+
+4.DQL（Data  Query Language）   数据查询语言
+SELECT
+
+DQL基本结构是由SELECT语句，FROM语句，WHERE语句组成的查询块。
+
+DML和DDL的区别：
+
+1.DML操作是可以手动控制事务的开启、提交和回滚的。
+2.DDL操作是隐性提交的，不能rollback。

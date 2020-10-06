@@ -1,0 +1,51 @@
+TCP三次握手
+
+client                          server
+
+Closed                          closed
+
+  ->    SYN=1,Seq=X
+  
+SYN-SEND                       SYN-RCVD
+  
+        SYN=1,ACK=X+1,Seq=Y       <-
+		
+  ->	ACK=Y+1,Seq=Z
+  
+established                    established
+  
+
+  
+  
+
+TCP四次挥手
+
+client                             server
+
+established                        established
+
+FIN-WAIT-1
+  ->    FIN=1,seq=u            
+        ACK=1,seq=v,ack=u+1         <-
+FIN_WAIT-2
+                                    CLOSE-WAIT
+		FIN=1,ACK=1,seq=w,ack=u+1	<- 
+		
+TIME-WAIT                           LAST-ACK
+  ->    ACK=1,seq=u+1,ack=w+1       
+  
+CLOSED                              CLOSED
+  
+  
+
+  
+time_wait是主动关闭的乙方在回复完对方的挥手后进入的一个长期状态，这个状态标准的持续时间是4分钟，
+4分钟后才会进去到closed状态，释放套接字资源。这个在具体实现上可以调整时间；
+
+它的作用是重传最后一个ack报文，确保对方可以收到。因为如果对方没有收到ack的话，会重传fin报文，
+出于time_wait状态的套接字会立即向对方重发ack报文。
+
+4分钟的时间足以是的这些残留报文切蒂消失。不然当心的端口被重复利用时，这些残留报文可能会干扰新的
+连接。
+
+2分钟MSL，最长报文寿命。

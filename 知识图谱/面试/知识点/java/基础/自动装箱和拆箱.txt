@@ -1,0 +1,21 @@
+Java自动装箱和拆箱
+
+装箱就是自动将基本数据类型转换为包装器类型，拆箱就是自动将包装类型转换为基本数据类型。
+
+int 4字节 Integer
+byte 1字节 Byte
+short 2字节 Short
+long 8字节 Long
+float 4字节 Float
+double 8字节 Double
+char 2字节 Character
+Boolean 未定 Boolean
+
+Integer total = Integer.valueOf(99);
+int totalprim = total.intValue;
+
+1.有拆箱操作时要特别注意封装类对象是否为null；
+2.装箱操作会创建对象，频繁的装箱操作会消耗许多内存，影响性能，所以可以避免装箱的时候应该尽量避免；
+3.equals(Object o)因为原equals方法中的参数类型是封装类型，所传入的参数类型是基本数据类型，所以会
+自动对其装箱，反之，会自动进行拆箱；
+4.当两种不同类型用==比较时，包装器类的需要拆箱，当同种类型用==比较时，会自动拆箱或者装箱。

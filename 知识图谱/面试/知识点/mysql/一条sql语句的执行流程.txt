@@ -1,0 +1,24 @@
+SQL执行流程
+
+1.连接器
+
+2.查询缓存
+
+3.分析器
+
+4.优化器
+
+5.执行器
+
+查询sql的时候应当遵守以下顺序
+
+SELECT XXX FROM XXX WHERE XXX GROUP BY XXX HAVING XXX ORDER BY XXX LIMIT XXX;
+
+eg:
+要求查询出挂科数目多于两门（包含两门）的前两名学生的姓名，如果挂科数目相同按学生姓名升序排列。
+
+下面是这条查询的sql语句
+
+SELECT `name`,COUNT(`name`) AS num FROM student 
+WHERE grade < 60 GROUP BY `name` HAVING num >= 2 
+ORDER BY num DESC,`name` ASC LIMIT 0,2;

@@ -1,0 +1,14 @@
+Object
+Object()
+clone()
+equals(Object)
+finalize()
+getClass()
+hashCode()
+notify()
+notifyAll()
+toString()
+wait()
+wait(long)
+wait(long,int)
+
