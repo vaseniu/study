@@ -1,0 +1,22 @@
+HashSet和HashMap的区别
+HashSet
+HashSet实现了Set接口，它不允许集合中有重复的值，当我们提到HashSet时，第一件事情就是在将对象存储在HashSet之前，要先确保对象重写equals()
+和hashCode()方法，这样才能比较对象的值是否相等，以确保set中没有储存相等的对象。如果我们没有重写这两个方法，将会使用这个方法的默认实现。
+
+public boolean add(Object o)方法用来在Set中添加元素，当元素值重复时则会立即返回false，如果成功添加的话会返回true。
+
+HashMap
+HashMap实现了Map接口，Map接口对键值对进行映射。Map中不允许重复的键。Map接口有两个基本的实现，HashMap和TreeMap。TreeMap保存了对象的排列次序，
+而HashMap则不能。HashMap允许键和值为null。HashMap是非synchronized的，但collection框架提供方法能保证HashMap synchronized，这样多个线程同时
+访问HashMap时，能保证只有一个线程更改Map。
+
+public Object put(Object Key,Object value)方法用来将元素添加到map中。
+
+HashMap的hash算法的实现原理
+return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16)
+1.为什么要无符号右移16位后做异或运算
+  将h无符号右移16为相当于将高区16位移动到了低区的16位，再与原hashcode做异或运算，可以将高低位二进制特征混合起来；
+2.高区的16位很有可能会被数组槽位数的二进制码所屏蔽，如果我们不做刚才移位异或运算，那么在计算槽位时将丢失高区特征。
+
+使用异或运算的原因
+异或运算能更好的保留各部分的特征，如果采用&运算计算出来的值会向0靠拢，采用|运算计算出来的值会向1靠拢。

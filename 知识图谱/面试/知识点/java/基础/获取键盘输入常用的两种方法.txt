@@ -1,0 +1,12 @@
+获取键盘输入的两种方式
+
+1.通过java.util.Scanner获取输入
+  Scanner scanner=new Scanner(System.in);
+  int num=scanner.nextInt()；
+  String str=scanner.next();
+  
+2.通过java.io.BufferedReader获取输入
+  BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+  String str=reader.readLine(); 
+  
+两种方法都是通过包装System.in获取的，System.in得到的是InputStream，也就是键盘输入流的InputStream。
